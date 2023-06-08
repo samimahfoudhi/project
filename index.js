@@ -1,4 +1,3 @@
-console.log($("h1").val());
 var data = [
   {
     image: "./images/jordan1chicago.png",
