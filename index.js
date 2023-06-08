@@ -1,3 +1,4 @@
+console.log($("h1").val());
 var data = [
   {
     image: "./images/jordan1chicago.png",
@@ -40,17 +41,35 @@ function display() {
 }
 display();
 
-// $(".box").hide();
+$(".box").hide();
+$(".jordan")
+  .on("mouseenter", function () {
+    $(this).siblings(".box").show();
+  })
+  .on("mouseleave", function () {
+    $(this).siblings(".box").hide();
+  });
 
-// $(".jordan").hover(function () {
-//   $(".box").show();
-// });
-$(document).ready(function () {
-  $(".jordan")
-    .on("mouseenter", function () {
-      $(".box").css("display", "visible");
-    })
-    .on("mouseleave", function () {
-      $(".box").css("display", "hidden");
-    });
-});
+function add() {
+  var newSneakers = {
+    title: $("#name").val(),
+    image: $("#iamge-model").val(),
+    parag: $("#history").val(),
+  };
+  data.push(newSneakers);
+  $(".global").empty();
+  display();
+}
+$("#btn").click(add);
+
+function deleteElement() {
+  let product = $("#delt").val();
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].title === product) {
+      data.splice(i, 1);
+    }
+  }
+  $(".global").empty();
+  display();
+}
+$("#delete").click(deleteElement);
